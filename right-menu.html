@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>right menu</title>
+		<link rel="stylesheet" href="css/mui.min.css">
+		<style>
+			body, .mui-content {
+				background-color: #333333;
+				color: #fff;
+			}
+			.title {
+				margin: 35px 15px 10px;
+			}
+			.title + .content {
+				margin: 10px 15px 35px;
+				color: #BBBBBB;
+				text-indent: 1em;
+				font-size: 14px;
+				line-height: 24px;
+			}
+			#login-out-btn {
+				position: fixed;
+				bottom: 30px;
+				left: 10%;
+				width: 80%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="mui-content">
+			<div class="title">用户中心</div>
+			<div class="content">
+				<p>用户名：辰来管理员</p>
+				<button id="login-out-btn" type="button" class="mui-btn mui-btn-danger mui-btn-block" style="padding: 5px 20px;">退出登录</button>
+			</div>
+		</div>
+		
+		<script src="js/mui.min.js"></script>
+		<script>
+			mui.init({
+				keyEventBind: {
+					backbutton: false,
+					menubutton: false
+				}
+			})
+			
+			var main = null;
+			
+			mui.plusReady(function() {
+				main = plus.webview.currentWebview().opener();
+			})
+			
+			function closeMenu() {
+				mui.fire(main, 'menu:swipeleft');
+			}
+			
+			window.addEventListener('swipeleft', function() {
+				console.log('right-menu: swipeleft');
+				closeMenu();
+			});
+			
+			document.getElementById("login-out-btn").addEventListener('tap', function() {
+				console.log('login-out-btn');
+				closeMenu();
+			});
+			
+			mui.menu = closeMenu;
+			
+		</script>
+	</body>
+</html>
