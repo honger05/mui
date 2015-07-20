@@ -8,73 +8,138 @@
 		<title>出库单</title>
 		<link rel="stylesheet" href="../css/mui.min.css">
 		<link rel="stylesheet" type="text/css" href="../css/app.css"/>
+		<style>
+			.mui-slider-indicator {
+				bottom: 0;
+			}
+			.mui-slider {
+				background-color: #f2f2f2;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="mui-content">
-			<ul class="mui-table-view">
-				<li class="mui-table-view-cell mui-media">
-					<a href="javascript:;">
-						<img src="../images/shuijiao.jpg" class="mui-media-object mui-pull-left"/>
-						<div class="mui-media-body">
-							幸福
-							<p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
-						</div>
-					</a>
-				</li>
-			</ul>
-			
-			<ul class="mui-table-view">
-				<li class="mui-table-view-cell mui-media">
-					<a href="javascript:;">
-						<img class="mui-media-object mui-pull-right" src="../images/yuantiao.jpg">
-						<div class="mui-media-body">
-							远眺
-							<p class='mui-ellipsis'>静静的看这个世界，最后终于疯了</p>
-						</div>
-					</a>
-				</li>
-			</ul>
-			
-			<ul class="mui-table-view mui-table-view-chevron">
-				<li class="mui-table-view-cell mui-media">
-					<a class="mui-navigate-right">
-						<img class="mui-media-object mui-pull-left" src="../images/cbd.jpg">
-						<div class="mui-media-body">
-							CBD
-							<p class='mui-ellipsis'>烤炉模式的城，到黄昏，如同打翻的调色盘一般.</p>
-						</div>
-					</a>
-				</li>
-			</ul>
-			
-			<div class="mui-card"  style="margin: 35px;">
-				<ul class="mui-table-view">
-					<li class="mui-table-view-cell mui-media">
-						<a href="javascript:;">
-							<img class="mui-media-object mui-pull-right" src="../images/muwu.jpg">
-							<div class="mui-media-body">
-								木屋
-								<p class='mui-ellipsis'>想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
-							</div>
-						</a>
-					</li>
-					<li class="mui-table-view-cell mui-media">
-						<a href="javascript:;">
-							<img class="mui-media-object mui-pull-right" src="../images/cbd.jpg">
-							<div class="mui-media-body">
-								CBD
-								<p class='mui-ellipsis'>烤炉模式的城，到黄昏，如同打翻的调色盘一般.</p>
-							</div>
-						</a>
-					</li>
-				</ul>
+			<div id="gallery" class="mui-slider" style="margin-top:15px;">
+				<div class="mui-slider-group">
+					<div class="mui-slider-item">
+						<ul class="mui-table-view mui-grid-view mui-grid-9">
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<span class="mui-icon iconfont icon-xiezi"></span>
+									<div class="mui-media-body">女鞋</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<span class="mui-icon iconfont icon-xiezi1"><span class="mui-badge">5</span></span>
+									<div class="mui-media-body">男鞋</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<span class="mui-icon iconfont icon-diannao2"></span>
+									<div class="mui-media-body">平板</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<span class="mui-icon iconfont icon-diannao"></span>
+									<div class="mui-media-body">电脑</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<span class="mui-icon iconfont icon-shouji"></span>
+									<div class="mui-media-body">手机</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<span class="mui-icon iconfont icon-erji"></span>
+									<div class="mui-media-body">耳机</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<span class="mui-icon iconfont icon-nvzhuangxian"></span>
+									<div class="mui-media-body">衣服</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<span class="mui-icon iconfont icon-kuzi"></span>
+									<div class="mui-media-body">裤子</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<span class="mui-icon iconfont icon-jiankangxiezi"></span>
+									<div class="mui-media-body">鞋子</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<span class="mui-icon iconfont icon-diannao3"></span>
+									<div class="mui-media-body">电脑</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<span class="mui-icon iconfont icon-diannao2"></span>
+									<div class="mui-media-body">HP</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<span class="mui-icon iconfont icon-diannao1"></span>
+									<div class="mui-media-body">MAC</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="mui-slider-indicator">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
 			</div>
 		</div>
 		
 		<script src="../js/mui.min.js"></script>
 		<script>
-			mui.init({
-				swipeBack: false
+			mui.init();
+			
+//			var list = mui.preload({
+//				id: 'list',
+//				url: 'list.html',
+//				styles: {
+//					top: '46px',
+//					bottom: '50px'
+//				}
+//			});
+			
+			var index = null;
+			function openMenu() {
+				!index && (index = mui.currentWebview.parent());
+				mui.fire(index, 'menu:open');
+			};
+			
+			mui('#gallery').on('tap', 'li', function() {
+				!index && (index = mui.currentWebview.parent());
+				var div = this.querySelector('.mui-media-body');
+				var title = '出库单 - ' + div.innerText;
+				mui.fire(index, 'list:open', {
+					title: title,
+					href: 'views/list.html'
+				});
+			});
+			
+			window.addEventListener('swiperight', function(e) {
+				console.log('ourderout-swiperight')
+				if (Math.abs(e.detail.angle) < 4) {
+					openMenu();
+				};
 			});
 		</script>
 	</body>

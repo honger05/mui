@@ -49,11 +49,11 @@
 	
 	<script src="js/mui.min.js"></script>
 	<script>
-		var main, menu, showMenu = false;
+		var main, menu, showMenu = false, aniShowString = "pop-in";;
 		
 		mui.init({
 			swipeBack: false,
-			statusBarBackground: '#f7f7f7',
+			statusBarBackground: 'red',
 			beforeback: back
 		});
 		
@@ -63,6 +63,7 @@
 			bottom: '50px'
 		}
 		
+		//android first show-ainimal
 		var aniShow = {};
 		
 		mui.plusReady(function() {
@@ -97,6 +98,8 @@
 			}, 300)
 			
 			main.addEventListener('maskClick', closeMenu);
+			
+			initTemplates();
 		})
 		
 		var activeTab = subpages[0];
@@ -168,12 +171,40 @@
 			console.log('swipeleft');
 		});
 		
-		window.addEventListener('tab', function() {
-			closeMenu();
-			console.log('tab');
+		window.addEventListener('menu:open', function() {
+			openMenu();
+			console.log('menu:open');
 		});
 		
-		window.addEventListener('menu:swipeleft', closeMenu);
+		window.addEventListener('menu:close', closeMenu);
+		
+		window.addEventListener('list:open', function(e) {
+			var title = e.detail.title;
+			var href = e.detail.href;
+			var template = getTemplate('default');
+			var headerWebview = template.header;
+			var contentWebview = template.content;
+			mui.fire(headerWebview, 'header:update', {
+				title: title,
+				showMenu: showMenu,
+				target: href,
+				aniShow: aniShowString
+			})
+			if (mui.os.ios || (mui.os.android && parseFloat(mui.os.version) < 4.4)) {
+				var reload = true;
+				if (!template.loaded) {
+					if (contentWebview.getURL() != href) {
+						contentWebview.loadURL(href);
+					} else {
+						reload = false;
+					}
+				} else {
+					reload = false;
+				}
+				(!reload) && contentWebview.show();
+				headerWebview.show(aniShowString, 150);
+			}
+		})
 		
 		mui.menu = function() {
 			if (showMenu) {
@@ -233,6 +264,56 @@
 				
 				showMenu = false;
 			}
+		}
+		
+		var templates = {};
+		function getTemplate(name, header, content) {
+			var template = templates[name];
+			if (!template) {
+				var headerWebview = mui.preload({
+					url: header,
+					id: name + '-main',
+					styles: {
+						popGesture: 'hide'
+					},
+					extras: {
+						mType: 'main'
+					}
+				})
+				var subWebview = mui.preload({
+					url: !content ? "" : content,
+					id: name + '-sub',
+					styles: {
+						top: '45px',
+						bottom: '0px'
+					},
+					extras: {
+						mType: 'sub'
+					}
+				})
+				subWebview.addEventListener('loaded', function() {
+					setTimeout(function() {
+						subWebview.show();
+					}, 50)
+				})
+				subWebview.hide();
+				headerWebview.append(subWebview);
+				if (mui.os.ios) {
+					headerWebview.addEventListener('hide', function() {
+						subWebview.hide('none');
+					})
+				}
+				templates[name] = template = {
+					name: name,
+					header: headerWebview,
+					content: subWebview
+				}
+			}
+			return template;
+		}
+		
+		function initTemplates() {
+			getTemplate('default', 'views/template.html');
 		}
 	</script>
 </body>
